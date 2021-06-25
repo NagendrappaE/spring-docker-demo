@@ -37,3 +37,33 @@ docker container ls
 docker logs <container id>
 
 
+=======================docker exec command+++++++++++++++
+
+ocker exec commands
+
+https://devconnected.com/docker-exec-command-with-examples/#:~:text=In%20order%20to%20execute%20a%20command%20within%20a%20specific%20directory,directory%20to%20execute%20the%20command.&text=%24%20docker%20exec%20%2Dw%20%2Fvar,Nothing%20has%20been%20logged%20yet.)
+
+1.docker exec <container id > <sh commands>
+
+
+2
+docker cp /host/path/target <containerId>:/file/path/within/container 
+
+ex1  :docker exec acbd6ba77216 "ls"
+
+ex 2: docker exec acbd6ba77216 bash -c "cd /etc ; ls"
+
+##to find the oracle 11g path inside the docker container
+docker exec acbd6ba77216 bash -c "cd /u01/app/oracle/product/11.2.0/xe/sqlplus '/ as sysdba"
+
+sqlplus '/ as sysdba
+
+
+docker cp db.properties mongodb:/home/sample
+
+
+**********this comand take u into the contaoiner ******8
+docker exec -it <container> bash
+
+
+
