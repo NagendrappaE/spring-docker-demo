@@ -64,6 +64,7 @@ docker cp db.properties mongodb:/home/sample
 
 **********this comand take u into the contaoiner ******8
 docker exec -it <container> bash
-
+ or 
+docker exec -it <container> bin/sh
 
 
