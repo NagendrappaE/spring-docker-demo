@@ -1,0 +1,70 @@
+#1  create spring boot web application
+
+#2 create dockerFile
+
+FROM openjdk:8-jdk-alpine(jdk to be used)
+EXPOSE 8080(port numer)
+COPY target/spring-docker-demo-*.jar spring-docker-demo.jar (copy the jar file from target to destination)_
+ENTRYPOINT ["java","-jar","spring-docker-demo.jar"](its like normal java -jar jarfileName)
+
+
+#3 build docker image
+docker build -f Dockerfile -t spring-docker-demo(docker image name) .
+
+
+#4  run the docker image 
+
+
+docker run -p 8080:8080 spring-docker-demo1(image name)
+
+
+#5 remove the docker image
+docker rmi spring-docker-demo(image name)
+Error response from daemon: conflict: unable to remove repository reference "spring-docker-demo" (must force) - container 7fb66f1c1ab5 is using its referenced image fde25513b829
+
+
+
+docker container rm 7fb66f1c1ab5
+
+post remove from container we need toexecute the below
+docker rmi spring-docker-demo
+
+
+#6 to see the docker logs
+
+docker container ls
+
+docker logs <container id>
+
+
+=======================docker exec command+++++++++++++++
+
+ocker exec commands
+
+https://devconnected.com/docker-exec-command-with-examples/#:~:text=In%20order%20to%20execute%20a%20command%20within%20a%20specific%20directory,directory%20to%20execute%20the%20command.&text=%24%20docker%20exec%20%2Dw%20%2Fvar,Nothing%20has%20been%20logged%20yet.)
+
+1.docker exec <container id > <sh commands>
+
+
+2
+docker cp /host/path/target <containerId>:/file/path/within/container 
+
+ex1  :docker exec acbd6ba77216 "ls"
+
+ex 2: docker exec acbd6ba77216 bash -c "cd /etc ; ls"
+
+##to find the oracle 11g path inside the docker container
+docker exec acbd6ba77216 bash -c "cd /u01/app/oracle/product/11.2.0/xe/sqlplus '/ as sysdba"
+
+sqlplus '/ as sysdba
+
+
+docker cp db.properties mongodb:/home/sample
+
+
+**********this comand take u into the contaoiner ******8
+docker exec -it <container> bash
+ or 
+docker exec -it <container> bin/sh
+
+
